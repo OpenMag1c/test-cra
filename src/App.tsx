@@ -1,8 +1,28 @@
-import { useToastService, ToastContainer } from "awesome-toast-library"
-import './App.css'
+import { 
+  useToastService, 
+  ToastContainer, 
+  IToastConfig, 
+  ToastDuration, 
+  ToastPosition, 
+  ToastAnimation, 
+  IToastStyle
+} from "awesome-toast-library";
+import './App.css';
+
+const toastConfig: IToastConfig = {
+  duration: ToastDuration.Medium,
+  position: ToastPosition.BottomRight,
+  animation: ToastAnimation.Movement,
+  margin: 10,
+  infoStyle: {
+    backgroundColor: "#8a2be2",
+    font: "Segoe Ui",
+    textColor: "black",
+  } as IToastStyle,
+};
 
 function App() {
-  const { info, warning, error, success } = useToastService();
+  const { info, warning, error, success } = useToastService(toastConfig);
 
   const warningClick = () => {
     warning("warning toast");
